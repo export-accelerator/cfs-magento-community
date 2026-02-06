@@ -1,0 +1,28 @@
+
+r config
+.editorconfig
+
+# SQL backup files
+ab3ae0a7_8a3f21-back.sql
+ab3ae0a7_8a3f21_back_modified-v1.sql
+ab3ae0a7_8a3f21_v2.sql
+
+# Zip / backup files
+app_5-feb-2026.zip
+cfsfullbackup.zip
+
+# Generated and build directories
+generated/
+vendor/
+var/
+pub/
+
+# Server / runtime directories
+phpserver/
+
+# Sample / local config files
+grunt-config.json.sample
+
+# HTML directory
+html
+
