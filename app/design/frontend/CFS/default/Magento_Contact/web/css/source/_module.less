@@ -1,0 +1,346 @@
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+*/
+
+& when (@media-common = true) {
+    .contact-index-index {
+        .column:not(.sidebar-main) {
+            .form.contact {
+                float: none;
+                width: 50%;
+            }
+        }
+
+        .column:not(.sidebar-additional) {
+            .form.contact {
+                float: none;
+                width: 50%;
+            }
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .contact-index-index .column:not(.sidebar-additional) .form.contact {
+        min-width: 600px;
+    }
+}
+
+//  Mobile
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .contact-index-index {
+        .column:not(.sidebar-main) {
+            .form.contact {
+                float: none;
+                width: 100%;
+            }
+        }
+
+        .column:not(.sidebar-additional) {
+            .form.contact {
+                float: none;
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+//
+//  Custom
+//  Common
+//  _____________________________________________
+& when (@media-common = true) {
+    .contact-index-index {
+        .page-title-wrapper {
+            display: none;
+        }
+        .contact-banner {
+            margin-bottom: 3rem;
+        }
+        .getintouch {
+            text-align: center;
+            .heading {
+                margin-bottom: 1.5rem;
+                h2 {
+                    font-size: 2.1rem;
+                    font-weight: bold;
+                }
+            }
+            .contact-info {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+                grid-gap: 3rem; 
+                max-width: 1080px;  
+                margin: 0 auto;
+                &-item {
+                    padding: 2rem;
+                    h3 {
+                        font-size: 2rem;
+                        font-weight: bold;
+                        margin-bottom: 1rem;
+                    }
+                }
+                .contact-info-icon {
+                    display: inline-block;
+                    width: 64px;
+                    height: 64px;
+                    margin-bottom: 1.2rem;
+                    &.location {
+                        background: url('@{baseDir}images/location-icon.svg') center center no-repeat;
+                    }
+                    &.mail {
+                        background: url('@{baseDir}images/mail-icon.svg') center center no-repeat;
+                    }
+                    &.phone {
+                        background: url('@{baseDir}images/call-icon.svg') center center no-repeat;
+                    }
+                    &.clock {
+                        background: url('@{baseDir}images/clock-icon.svg') center center no-repeat;
+                    }
+                }
+            }
+        }        
+        .contact-form-heading {
+            margin-top: 6rem;
+            margin-bottom: 4rem;
+            display: block;
+            max-width: 950px;
+            h2 {
+                font-weight: 700;
+                font-size: 2.8rem;
+                text-transform: uppercase;
+                margin-bottom: 1.5rem;
+            }
+        }
+        .amform-form {
+            max-width: 100%;
+        }
+    }
+    .amform-form-fieldset {
+        .amcform-page-wrap.fields {
+            padding-left: 33px;
+            .field{
+                &.fb-h3 {
+                    margin-left: -33px !important;
+                }
+                &.fb-radio {
+                    display: flex;
+                    align-items: center;
+                    .fb-radio-group-label {
+                        margin-bottom: 0;
+                    }
+                    .control {
+                        margin-left: 3rem;
+                        
+                        input[type="radio"] {
+                            visibility: hidden;
+                            position: absolute;
+                            pointer-events: none;
+                            + .amform-versiontwo-label {                        
+                                position: relative;
+                                display: inline-block;
+                                padding: 1rem;
+                                min-width: @radio-minwidth;
+                                text-align: center;
+                                line-height: @checkbox-height;
+                                .border-radius(@button__border-radius);
+                                border: 1px solid @color-gray76;
+                                cursor: pointer;
+                                margin-right: 1.2rem;
+                            }
+                            &:checked {
+                                + .amform-versiontwo-label {
+                                        border-color: @second_primary_color;
+                                        background-color:  @second_primary_color;
+                                        color: @color-white;
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+                &.fb-checkbox {
+                    &.field-checkboxtwo-1681904646049 {
+                        min-height: 7rem;
+                        display: inline-flex;
+                        align-items: center;
+                        .fb-checkbox-group-label {
+                            display: none;
+                        }
+
+                    }
+                    input[type="checkbox"] {
+                        visibility: hidden;
+                        position: absolute;
+                        pointer-events: none;
+                        + .amform-versiontwo-label {                        
+                            position: relative;
+                            padding-left: 0;
+                            padding-right: 0;
+                            display: inline-flex;
+                            align-items: center;
+                            margin-right: 0;
+                            &:before {
+                                content:'';
+                                cursor: pointer;
+                                width: @checkbox-width;
+                                height: @checkbox-height;
+                                .border-radius(@button__border-radius);
+                                border: 1px solid @color-gray76;
+                                margin-right: 1.5rem;
+                            }
+                        }
+                        &:checked {
+                            + .amform-versiontwo-label {
+                                &:before {
+                                    border-color: @second_primary_color;
+                                    background-color:  @second_primary_color;
+                                }
+                                &:after {
+                                    content:'';
+                                    pointer-events: none;
+                                    position: absolute;
+                                    left: 12px;
+                                    top: 16px;
+                                    width: 16px;
+                                    height: 8px;
+                                    border: 3px solid @color-white;
+                                    border-top-width: 0;
+                                    border-right-width: 0;
+                                    transform: rotate(-52deg);
+                                }
+                            }
+                        }
+                    }
+                }
+                &.fb-file {
+                    position: relative;
+                    .fb-file-label.label {
+                        margin: 0;
+                        padding: @form-element-input__padding;
+                        height: @input-desk_height;
+                        line-height: @input-desk_height;
+                        .border-radius(@form-element-input__border-radius);
+                        border: 1px solid @color-gray76;
+                        width: 80%;
+                        position: relative;
+                        overflow: hidden;
+                        cursor: pointer;
+                        &:before {
+                            position: absolute;
+                            content: "";
+                            right: 0;
+                            top: 0;
+                            bottom: 0;
+                            width: 7rem;
+                            inset: 0 0 0 auto;
+                            background: url('@{baseDir}images/upload-file.png') center center no-repeat @button-primary__background;
+                            background-size: contain;
+                        }
+                    }
+                    .control {
+                        visibility: hidden;
+                        position: absolute;
+                        pointer-events: none;
+                    }
+                }
+            }
+        }
+        
+    }
+    .amform-form {
+        .amcform-toolbar {
+            text-align: left;
+            .action.primary.amcform-submit {
+                min-width: 198px;
+                background: @button-primary__background;
+                border: @button-primary__border;
+                padding: @button__font-size__l;
+                border-radius: @button__border-radius;
+                &:hover {
+                    background: @button-primary__hover__background;
+                    border: @button-primary__hover__border;
+                }
+            }
+        }
+    }
+    
+}
+& when (@media-target = 'desktop'), (@media-target = 'all') {
+    @media only screen and (min-width: @screen__m) and (max-width: @screen__l) {
+        .amform-form-fieldset {
+            .amcform-page-wrap.fields {
+                .field {
+                    &.fb-file {
+                        margin-right: 2%;
+                        .fb-file-label.label {
+                            width: 100%;
+                        }
+                        + .fb-checkbox {
+                            max-width: 64%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media only screen and (min-width: @screen__t) and (max-width: @screen__l) {
+        .contact-index-index {
+            .getintouch {
+                .contact-info {
+                    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                }
+            }
+        } 
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .amform-form-fieldset {
+        .amcform-page-wrap.fields {
+            .field {
+                &.fb-file {
+                    max-width: 42%;
+                    .fb-file-label.label {
+                        height: @input-mob_height;
+                        line-height: @input-mob_height;
+                    }
+                    + .fb-checkbox {
+                        max-width: 98%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+& when (@media-target = 'mobile'), (@media-target = 'all') {
+    @media only screen and (max-width: (@screen__m - 1)) {
+        .amform-form-fieldset {
+            .amcform-page-wrap.fields {
+                .field {
+                    max-width: 98%;
+                    &.fb-file {
+                        max-width: 450px !important;
+                        .fb-file-label.label {
+                            width: 100%;
+                        }
+                    }
+                    &.fb-radio {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        .control {
+                            margin-left: 0;
+                            margin-top: 5.5px;
+                        }
+                    }
+                }
+            }
+        }   
+    }   
+}

@@ -1,0 +1,54 @@
+<?php /** @var $block \Overdose\Brands\Block\Widget\Brands */ ?>
+
+<?php $brands = $block->getBrandsList(); ?>
+<?php if($brands): ?>
+<div class="shop-by-brands">
+    <h2 class="section-heading"><?= __('Shop by Brand'); ?></h2>
+    <div class="brands-list owl-carousel">
+        <?php foreach($brands as $brand):?>
+        <div class="item">
+			<a href="<?= $brand['url'] ?>">
+				<?php if($brand['logo_url']):?>
+					<img src="<?= $brand['logo_url'] ?>" alt="<?= $brand['name'] ?>" />
+				<?php else:?>
+					<span class="placeholder"><?= $brand['name'] ?></span>
+				<?php endif; ?>
+			</a>
+        </div>
+        <?php endforeach; ?>
+
+    </div>
+	<script>
+		require(['jquery', 'owlcarousel'],
+		function($){ 
+			$(document).ready(function(){
+				$('.brands-list.owl-carousel').owlCarousel({
+					loop: $('.brands-list.owl-carousel').lenght > 6 ? true : false,
+					margin:30,
+					nav: true,
+					responsive:{
+						0:{
+							items:2
+						},
+						600:{
+							items:3
+						},
+						768:{
+							items:4
+						},
+						1024:{
+							items:5
+						},
+						1200:{
+							items:6
+						}
+					}
+				})
+			});
+		});
+	</script>
+</div>
+
+<?php endif; ?>
+
+

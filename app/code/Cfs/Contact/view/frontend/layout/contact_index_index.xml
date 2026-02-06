@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <referenceBlock name="contactForm">
+                <action method="setTemplate">
+                        <argument name="template" xsi:type="string">Cfs_Contact::custom_form.phtml</argument>
+                </action>
+            </referenceBlock>
+        </referenceContainer>
+        <referenceContainer name="content.top">
+            <block class="Magento\Cms\Block\Block" name="contact_us_block">
+					<arguments>
+						<argument name="block_id" xsi:type="string">contact_us_block</argument>
+					</arguments>
+				</block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,36 @@
+<?php
+
+namespace Cfs\Minicart\Plugin\Cart;
+
+use Magento\Framework\UrlInterface;
+
+class ConfigPlugin
+{
+    /**
+     * @var UrlInterface
+     */
+    protected $url;
+
+    /**
+     * ConfigPlugin constructor.
+     * @param UrlInterface $url
+     */
+    public function __construct(
+        UrlInterface $url
+    ) {
+        $this->url = $url;
+    }
+
+    /**
+     * @param \Magento\Checkout\Block\Cart\Sidebar $subject
+     * @param array $result
+     * @return array
+     */
+    public function afterGetConfig(
+        \Magento\Checkout\Block\Cart\Sidebar $subject,
+        array $result
+    ) {
+        $result['emptyMinicart'] = $this->url->getUrl('minicart/cart/emptycart');
+        return $result;
+    }
+}

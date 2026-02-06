@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="VerifyCreateCompanyUserPageLoadsWithCustomerCustomAttributeTest">
+        <annotations>
+            <stories value="Verify Create Company User Page Loads With Customer Custom Attribute"/>
+            <title value="Verify Create Company User Page Loads With Customer Custom Attribute"/>
+            <description value="Verify Create Company User Page Loads With Customer Custom Attribute"/>
+            <severity value="MAJOR"/>
+            <testCaseId value="AC-7310"/>
+        </annotations>
+        <after>
+            <!-- Admin Deletes the Company created -->
+            <actionGroup ref="AdminDeleteCompanyActionGroup" stepKey="deleteCompanyFromPreconditions">
+                <argument name="companyName" value="{{Default_Company.company_name}}"/>
+            </actionGroup>
+
+            <!-- Step 10: Logout of the application -->
+            <actionGroup ref="AdminLogoutActionGroup" stepKey="logout"/>
+        </after>
+
+        <!-- Step1: Admin Login successfully  -->
+        <actionGroup ref="AdminLoginActionGroup" stepKey="AdminLoginsToBackend"/>
+
+        <!-- Step2 and 3: Navigate to Stores > Attributes > Customer and then create a Customer Attribute -->
+        <amOnPage url="{{CustomerAttributesPage.url}}" stepKey="navigateToCustomerAddress"/>
+        <waitForPageLoad stepKey="waitForCustomerAttributePageLoaded"/>
+        <click selector="{{CustomerAccountSection.newAttribute}}" stepKey="clickToCreateAttribute"/>
+        <waitForPageLoad stepKey="waitForNewAttributePageLoaded"/>
+        <fillField selector="{{CustomerAccountSection.label}}" userInput="{{AttributeDateData.label}}" stepKey="TypeDefaultLabel"/>
+        <grabValueFrom selector="{{CustomerAccountSection.label}}" stepKey="getCustomerAttributeName"/>
+        <fillField selector="{{CustomerAccountSection.code}}" userInput="{{AttributeDateData.code}}" stepKey="TypeAttributeCode"/>
+        <selectOption selector="{{CustomerAccountSection.inputType}}" userInput="{{AttributeDateData.inputType}}" stepKey="selectInputType"/>
+        <selectOption selector="{{CustomerAccountSection.usedInGrid}}" userInput="{{AttributeDateData.is_used_in_grid}}" stepKey="selectUseInGridOption"/>
+        <selectOption selector="{{CustomerAccountSection.usedForSegment}}" userInput="{{AttributeDateData.is_used_for_customer_segment}}" stepKey="selectAttributeUseInCustomerSegment"/>
+        <selectOption selector="{{CustomerAccountSection.showInSF}}" userInput="{{AttributeDateData.is_visible}}" stepKey="selectAttributeVisibleInStorefront"/>
+        <fillField selector="{{CustomerAccountSection.sortOrder}}" userInput="{{AttributeDateData.sortOrder}}" stepKey="TypeSortOrder"/>
+        <selectOption selector="{{CustomerAccountSection.selectFormToUse}}" parameterArray="['{{AttributeDateData.used_in_forms[0]}}', '{{AttributeDateData.used_in_forms[1]}}', '{{AttributeDateData.used_in_forms[2]}}']" stepKey="selectForms"/>
+        <click selector="{{CustomerAccountSection.save}}" stepKey="saveAttribute"/>
+        <waitForPageLoad stepKey="WaitForAttributeSaved"/>
+
+        <!-- Step4 and 5: Navigate To Create Company Page and create a New Company Page to verify if the created custom attribute is reflected in Company Admin section -->
+        <actionGroup ref="AdminGoToCreateCompanyPageActionGroup" stepKey="goToCreateCompanyPage"/>
+        <actionGroup ref="AdminFillCompanyGeneralInformationActionGroup" stepKey="fillCompanyGeneralInformation"/>
+        <actionGroup ref="AdminFillCompanyLegalAddressActionGroup" stepKey="fillCompanyLegalAddressInformation"/>
+        <actionGroup ref="AdminFillCompanyAdminActionGroup" stepKey="fillCompanyAdminInformation"/>
+        <seeElement selector="{{AdminNewCompanySection.addedCustomerAttribute('$getCustomerAttributeName')}}" stepKey="VerifyIfTheCustomAttributeCreatedIsPresent"/>
+
+        <!-- Step 6: Verify if the created Customer Attribute is present -->
+        <actionGroup ref="AdminCompanySaveActionGroup" stepKey="saveCompany">
+            <argument name="saveMessage" value="You have created company"/>
+        </actionGroup>
+
+        <!-- Step 7, 8 and 9: Navigate back to Stores > Attributes > Customer , search for the customer attribute and delete the attribute -->
+        <actionGroup ref="AdminDeleteCustomerCustomAttributeActionGroup" stepKey="deleteCustomerCustomAttribute">
+            <argument name="attributeLabel" value="{{AttributeDateData.label}}"/>
+        </actionGroup>
+    </test>
+</tests>

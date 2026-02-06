@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ /**
+  * Copyright © Magento, Inc. All rights reserved.
+  * See COPYING.txt for license details.
+  */
+-->
+
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+    <actionGroup name="AdminChangeCompanyStatusActionGroup">
+        <annotations>
+            <description>Sets the status of a company on the Create or Edit Company Page. Must use AdminChangeCompanyStatusRejectedActionGroup for 'Rejected' status</description>
+        </annotations>
+        <arguments>
+            <argument name="companyStatus" defaultValue="Active" type="string"/>
+        </arguments>
+        <waitForElementVisible selector="{{AdminNewCompanySection.status}}" stepKey="waitForCompanyStatus"/>
+        <selectOption selector="{{AdminNewCompanySection.status}}" userInput="{{companyStatus}}" stepKey="fillCompanyStatus"/>
+        <waitForElementVisible selector="{{ModalConfirmationSection.OkButton}}" stepKey="waitForChangeStatusConfirmationModal"/>
+        <click selector="{{ModalConfirmationSection.OkButton}}" stepKey="clickChangeStatus"/>
+        <waitForPageLoad stepKey="waitForPageLoad"/>
+    </actionGroup>
+</actionGroups>

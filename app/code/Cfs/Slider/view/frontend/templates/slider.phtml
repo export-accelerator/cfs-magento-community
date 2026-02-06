@@ -1,0 +1,20 @@
+<?php
+$sliders = $block->getSliders();
+?>
+<?php if ($sliders->getSize()) { ?>
+    <div class="owl-carousel home-slider">
+        <?php
+        $count = 0;
+        foreach ($sliders as $slider) { ?>
+            <div class="item item-custom">
+                <?php if ($slider->getId()) {
+                ?>
+                    <a href="<?php echo $slider->getUrl();?>"><img src="<?php echo $block->getSliderBaseUrl($slider->getImage()); ?>" alt="<?= $slider->getTitle(); ?>" title="<?= $slider->getTitle(); ?>" data-index="<?= $count; ?>" width="100%" /></a>
+                <?php }
+                $count++;
+                ?>
+            </div>
+        <?php } ?>
+
+    </div>
+<?php } ?>

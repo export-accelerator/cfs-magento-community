@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Cfs_Slider::parent" title="Slider" module="Cfs_Slider" sortOrder="70" parent="Magento_Backend::content" resource="Cfs_Slider::slider"/>
+        <add id="Cfs_Slider::manage_Slider" title="Manage Slider" module="Cfs_Slider" sortOrder="80" parent="Cfs_Slider::parent" resource="Cfs_Slider::slider" action="slider/slider/index" />
+    </menu>
+</config>

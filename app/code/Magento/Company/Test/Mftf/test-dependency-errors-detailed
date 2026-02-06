@@ -1,0 +1,115 @@
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/Test/AdminCompanyActionLogsTest.xml"
+contains entity references that violate dependency constraints:
+		
+	 AdminOpenActionLogsReportPageActionGroup from module(s): magento/module-logging
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/Test/AdminCreateCompanyAccountButtonIsNotAvailableTest.xml"
+contains entity references that violate dependency constraints:
+		
+	 StorefrontSignInFormSection from module(s): magento/module-b2b
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/Test/AdminValidateCustomerCustomAttributeValueInCompanyAdminTest.xml"
+contains entity references that violate dependency constraints:
+		
+	 AttributeTextField from module(s): magento/module-customer-custom-attributes
+	 AdminNavigateToCustomerAttributesPageActionGroup from module(s): magento/module-customer-custom-attributes
+	 AdminCreateCustomerAttribute from module(s): magento/module-customer-custom-attributes
+	 DeleteCustomerAttribute from module(s): magento/module-customer-custom-attributes
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/Test/AdminVerifyCustomerAttributeWhenCreatingNewCompanyTest.xml"
+contains entity references that violate dependency constraints:
+		
+	 AttributeTextFieldData from module(s): magento/module-customer-custom-attributes
+	 AdminCreateCustomerCustomAttribute from module(s): magento/module-customer-custom-attributes
+	 AdminDeleteCustomerCustomAttributeActionGroup from module(s): magento/module-customer-custom-attributes
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/Test/AdminVerifyCustomerGroupOfACustomerChangesWhenACompanyIsAssignedToTheCustomerTest.xml"
+contains entity references that violate dependency constraints:
+		
+	 NewSharedCatalog from module(s): magento/module-shared-catalog, magento/module-shared-catalog
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/Test/AdminVerifyCustomerGroupOfCompanyCustomerChangesWhenNewCustomerGroupIsAssignedToACompanyTest.xml"
+contains entity references that violate dependency constraints:
+		
+	 SecondSharedCatalog from module(s): magento/module-shared-catalog
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/Test/StoreFrontVerifyCustomerCustomAttributesAtCreateAccountPageTest.xml"
+contains entity references that violate dependency constraints:
+		
+	 CustomerAttributesPage from module(s): magento/module-customer-custom-attributes
+	 AttributeYesNo from module(s): magento/module-customer-custom-attributes
+	 StorefrontCustomerCustomAttributeSection from module(s): magento/module-customer-custom-attributes
+	 AdminCreateCustomerAttribute from module(s): magento/module-customer-custom-attributes
+	 FilterCustomerAttributesByAttributeCodeAndDefaultLabelActionGroup from module(s): magento/module-customer-custom-attributes
+	 DeleteCustomerAttribute from module(s): magento/module-customer-custom-attributes
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/Test/StorefrontCompanyUserCreateTest.xml"
+contains entity references that violate dependency constraints:
+		
+	 AdminCustomerAttributeEditSection from module(s): magento/module-customer-custom-attributes
+	 AdminNavigateToCustomerAttributesPageActionGroup from module(s): magento/module-customer-custom-attributes
+	 AdminOpenCustomerAttributeByCodeActionGroup from module(s): magento/module-customer-custom-attributes
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/Test/VerifyCreateCompanyUserPageLoadsWithCustomerCustomAttributeTest.xml"
+contains entity references that violate dependency constraints:
+		
+	 CustomerAttributesPage from module(s): magento/module-customer-custom-attributes
+	 CustomerAccountSection from module(s): magento/module-customer-custom-attributes
+	 AttributeDateData from module(s): magento/module-customer-custom-attributes
+	 AdminDeleteCustomerCustomAttributeActionGroup from module(s): magento/module-customer-custom-attributes
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/ActionGroup/AdminAddACompanyToCustomerActionGroup.xml"
+contains entity references that violate dependency constraints:
+		
+	 CustomerInformationSection from module(s): magento/module-b2b
+	 CustomerAccountSection from module(s): magento/module-customer-custom-attributes
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/ActionGroup/AdminAddAssociateCompanyToCustomerActionGroup.xml"
+contains entity references that violate dependency constraints:
+		
+	 CustomerInformationSection from module(s): magento/module-b2b
+	 CustomerAccountSection from module(s): magento/module-customer-custom-attributes
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/ActionGroup/AdminAssertCustomerGroupOnCartPriceRuleFormActionGroup.xml"
+contains entity references that violate dependency constraints:
+		
+	 CustomerInformationSection from module(s): magento/module-b2b
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/ActionGroup/AdminAssertCustomerGroupOnCatalogPriceRuleFormActionGroup.xml"
+contains entity references that violate dependency constraints:
+		
+	 CustomerInformationSection from module(s): magento/module-b2b
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/ActionGroup/AdminAssertCustomerGroupOnCustomerFormActionGroup.xml"
+contains entity references that violate dependency constraints:
+		
+	 CustomerInformationSection from module(s): magento/module-b2b
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/ActionGroup/AdminAssertSystemReportDetailsDataActionGroup.xml"
+contains entity references that violate dependency constraints:
+		
+	 AdminActionLogReportDetailsSection from module(s): magento/module-logging
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/ActionGroup/AdminAssertSystemReportGridRowDataActionGroup.xml"
+contains entity references that violate dependency constraints:
+		
+	 AdminActionLogReportGridSection from module(s): magento/module-logging
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/ActionGroup/AdminClickViewOnSystemReportGridRowActionGroup.xml"
+contains entity references that violate dependency constraints:
+		
+	 AdminActionLogReportGridSection from module(s): magento/module-logging
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/ActionGroup/AdminCustomerAttributeSetShowInStoreFrontValueToSpecificWebsiteActionGroup.xml"
+contains entity references that violate dependency constraints:
+		
+	 AdminCustomerAttributeSection from module(s): magento/module-customer-custom-attributes
+	 AttributeEditSection from module(s): magento/module-customer-custom-attributes
+	 CustomerAccountSection from module(s): magento/module-customer-custom-attributes
+	 FilterCustomerAttributesByAttributeCodeActionGroup from module(s): magento/module-customer-custom-attributes
+
+File "/var/www/html/app/code/Magento/Company/Test/Mftf/ActionGroup/AdminDeleteCompanyFilterByEmailActionGroup.xml"
+contains entity references that violate dependency constraints:
+		
+	 UniqueCompany from module(s): magento/module-b2b

@@ -1,0 +1,6 @@
+<?php
+$helper = $this->helper("Cfs\Contact\Helper\Data");
+$formId = (int)$helper->getFormId();
+if(!empty($formId)) { 
+    echo $this->helper("Amasty\Customform\Helper\Data")->renderForm($formId);
+ }

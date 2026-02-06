@@ -1,0 +1,42 @@
+<?php
+$categories = $block->getCategories();
+if (count($categories)) { ?>
+
+<div class="cfa-category">
+    <h2 class="section-title">All Categories</h2>
+    <div class="cfa-categoryList">
+        <?php
+
+        foreach ($categories as $category) { ?>
+            <?php
+            $_imgUrl = $category->getIcon();
+            $desc = '';
+            if (!empty($category->getDescription())) {
+                $desc = strip_tags($category->getDescription());
+                if (strlen($desc) > 50) {
+                    $descCut = substr($desc, 0, 100);
+                    $endPoint = strrpos($descCut, ' ');
+                    $desc = $endPoint ? substr($descCut, 0, $endPoint) : substr($desc, 0);
+                }
+            } ?>
+            <div class="cfa-categoryList-item">
+                <a href="<?php echo $category->getUrl(); ?>" title="<?php echo $category->getName() ?>">
+                    <div class="cfa-categoryBox">
+                        <?php if (empty($_imgUrl)) { ?>
+                            <div class="cfa-categoryBox-icon">
+                                <img src="<?php echo $block->getBaseUrl() . 'media/catalog/category/magento2.png' ?>" width="70" height="70" alt="<?php echo $category->getName() ?>">
+                            </div>
+                        <?php } else { ?>
+                            <div class="cfa-categoryBox-icon">
+                                <img src="<?php echo $_imgUrl ?>" title="<?php echo $category->getName() ?>" width="70" height="70" alt="<?php echo $category->getName(); ?>">
+                            </div>
+                        <?php  } ?>
+                        <h3><?php echo $category->getName(); ?> </h3>
+                        <p><?php echo $desc; ?> </p>
+                    </div>
+                </a>
+            </div>
+        <?php } ?>
+    </div>
+</div>
+<?php } ?>

@@ -1,0 +1,23 @@
+{
+    "od_brands": {
+        "column": {
+            "brand_id": true,
+            "name": true,
+            "logo": true,
+            "identifier": true,
+            "meta_title": true,
+            "meta_description": true,
+            "content": true,
+            "is_featured": true,
+            "store_ids": true,
+            "position": true
+        },
+        "index": {
+            "OD_BRANDS_IS_FEATURED_POSITION": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "OD_BRANDS_IDENTIFIER": true
+        }
+    }
+}

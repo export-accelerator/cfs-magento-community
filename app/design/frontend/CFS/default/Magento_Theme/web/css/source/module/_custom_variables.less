@@ -1,0 +1,103 @@
+//
+// Colors
+// --------------------------------
+@primary_color:#002856;
+@second_primary_color:#F5333F;
+@black_color:#000;
+@white_color:#fff;
+@grey_600:#707070;
+@grey_400:#B1B1B1;
+@grey_800:#979797; 
+@bg_grey:#EBEBEB;
+@bg_white:#fff;
+@color-orange-red1: @second_primary_color;
+@light_reddish : #FFF5F6;
+
+//
+// Body color
+// --------------------------------
+@primary__color: @color-black;
+
+//
+// Border Color
+// --------------------------------
+@border_color1:#DBDBDB;
+@border_color2:#B1B1B1;
+
+//
+// Fonts
+// --------------------------------
+@primary_font:'Arial',sans-serif; 
+@font-family__base: @primary_font;
+@font-size-ratio__base: 1.6;
+
+//
+// Links
+// --------------------------------
+@link__color: @color-black;
+@link__visited__color: @color-black;
+@link__hover__color: @second_primary_color;
+@link__active__color: @second_primary_color;
+@link__hover__text-decoration: @link__text-decoration;
+@link__active__text-decoration: @link__text-decoration;
+
+//responsive
+@screen__t: 992px;
+
+
+@layout__width: 100%;
+
+//
+// Forms
+// --------------------------------
+@input-desk_height: 7rem;
+@input-mob_height: 5rem;
+@button-y-padding: ceil(1.27 * @font-size__base);
+@color-gray76: @grey_400;
+@form-element-input__border-radius: 1.2rem;
+@form-field-type-control-inline__width: 100%;
+@form-field-type-label-inline__width: false;
+@form-field-type-label-inline__align: false;
+@form-field-type-label-inline__padding: 0 0 @form-field-type-label-inline__padding-top 0;
+@form-element-input__padding: 0 ceil(1.1 * @font-size__base);
+@checkbox-width: 4rem;
+@radio-minwidth: 5.5rem;
+@checkbox-height: 4.8rem;
+@checkbox-width_mobile: 3.2rem;
+@checkbox-height_mobile: 3.8rem;
+
+
+//
+// Buttons
+// --------------------------------
+@button-primary__background: @second_primary_color;
+@button-primary__border: 1px solid @second_primary_color;
+@button__font-size: ceil(1.1 * @font-size__base);
+@button__font-size__l: @button__font-size;
+@button-primary__hover__background: @primary_color; //shade(@second_primary_color,10%)
+@button-primary__hover__border: 1px solid @primary_color;
+@button__padding: @button-y-padding 3rem;
+@button__padding__l: @button__padding;
+@button__border-radius: 1.5rem;
+@button__line-height__l: @button__line-height;
+
+
+@button__background: @primary_color;
+@button__border: 1px solid @primary_color;
+@button__hover__background: shade(@primary_color,10%);
+@button__hover__border:  1px solid shade(@primary_color,10%);
+
+//
+// MIXIN    
+// --------------------------------
+.border-radius(@radius){
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    -ms-border-radius: @radius;
+    border-radius: @radius;
+}
+.box-shadow(@arguments) {
+    -webkit-box-shadow: @arguments;
+    -moz-box-shadow: @arguments;
+    box-shadow: @arguments;
+}

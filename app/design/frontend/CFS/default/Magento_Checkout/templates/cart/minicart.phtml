@@ -1,0 +1,102 @@
+<?php
+
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var $block \Magento\Checkout\Block\Cart\Sidebar */
+/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+?>
+<?php
+$_priceHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+?>
+
+<div data-block="minicart" class="minicart-wrapper">
+    <a class="action showcart" href="<?= $block->escapeUrl($block->getShoppingCartUrl()) ?>" data-bind="scope: 'minicart_content'">
+        <span class="text"><?= $block->escapeHtml(__('My Cart')) ?></span>
+        <span class="counter qty empty" data-bind="css: { empty: !!getCartParam('summary_count') == false && !isLoading() },
+               blockLoader: isLoading">
+            <span class="counter-number">
+                <!-- ko if: getCartParam('summary_count') -->
+                <!-- ko text: getCartParam('summary_count').toLocaleString(window.LOCALE) --><!-- /ko -->
+                <!-- /ko -->
+            </span>
+            <span class="counter-label">
+                <!-- ko if: getCartParam('summary_count') -->
+                <!-- ko text: getCartParam('summary_count').toLocaleString(window.LOCALE) --><!-- /ko -->
+                <!-- ko i18n: 'items' --><!-- /ko -->
+                <!-- /ko -->
+            </span>
+        </span>
+        <!-- ko if: getCartParam('summary_count') -->
+        <span class="price-label" data-bind="html: getCartParam('subtotal')"></span>
+        <!-- /ko -->
+        <!-- ko ifnot: getCartParam('summary_count') -->
+        <span class="price-label">
+            <?= $_priceHelper->currency("0", true, false); ?>
+        </span>
+        <!-- /ko -->
+    </a>
+    <?php if ($block->getIsNeedToDisplaySideBar()) : ?>
+        <div class="block block-minicart" data-role="dropdownDialog" data-mage-init='{"dropdownDialog":{
+                "appendTo":"[data-block=minicart]",
+                "triggerTarget":".showcart",
+                "timeout": "2000",
+                "closeOnMouseLeave": false,
+                "closeOnEscape": true,
+                "triggerClass":"active",
+                "parentClass":"active",
+                "buttons":[]}}'>
+            <div id="minicart-content-wrapper" data-bind="scope: 'minicart_content'">
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            </div>
+            <?= $block->getChildHtml('minicart.addons') ?>
+        </div>
+    <?php else : ?>
+        <?php $scriptString = <<<script
+            require(['jquery'], function ($) {
+                $('a.action.showcart').on('click', function() {
+                    $(document.body).trigger('processStart');
+                });
+            });
+script;
+        ?>
+        <?= /* @noEscape */ $secureRenderer->renderTag('script', [], $scriptString, false); ?>
+    <?php endif ?>
+    <?= /* @noEscape */ $secureRenderer->renderTag('script', [], 'window.checkout = ' .
+        /* @noEscape */ $block->getSerializedConfig(), false); ?>
+    <script type="text/x-magento-init">
+        {
+        "[data-block='minicart']": {
+            "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+        },
+        "*": {
+            "Magento_Ui/js/block-loader": "<?= $block->escapeJs(
+                                                $block->escapeUrl($block->getViewFileUrl('images/loader-1.gif'))
+                                            ) ?>"
+        }
+    }
+    </script>
+</div>
+<script>
+    require(['Magento_Customer/js/customer-data', 'jquery'], function(customerData, $) {
+        var cart = customerData.get('cart');
+        var count = cart().summary_count;
+        cart.subscribe(function() {
+            if (cart().summary_count !== count) {
+                count = cart().summary_count;
+                $("button.action.tocart.primary").removeClass("in-cart");
+                if (count > 0) {
+                    cart().items.forEach((item) => {
+                        let sku = item.product_sku ;
+                        $("form[data-product-sku='"+sku+"']").find("button.action.tocart.primary").addClass("in-cart");
+                    });
+                    $(".minicart-wrapper").addClass("has-items");
+                } else {
+                    $(".minicart-wrapper").removeClass("has-items");
+                }
+            }
+        });
+    });
+</script>

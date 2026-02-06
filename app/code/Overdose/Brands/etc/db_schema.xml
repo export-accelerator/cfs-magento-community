@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="od_brands">
+        <column xsi:type="smallint" name="brand_id" padding="6" unsigned="false" nullable="false" identity="true" comment="Brand ID"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Brands Name"/>
+        <column xsi:type="varchar" name="logo" nullable="false" length="255" comment="Brands Logo"/>
+        <column xsi:type="varchar" name="identifier" nullable="false" length="255" comment="Identifier"/>
+        <column xsi:type="varchar" name="meta_title" length="255" comment="Meta Title"/>
+        <column xsi:type="varchar" name="meta_description" length="255" comment="Meta Description"/>
+        <column xsi:type="text" name="content" nullable="false" comment="Brands Page Content"/>
+        <column xsi:type="boolean" name="is_featured"  comment="Is featured"/>
+        <column xsi:type="varchar" name="store_ids" nullable="false" length="255" default="0" comment="Store ids"/>
+        <column xsi:type="smallint" name="position" padding="6" unsigned="true" nullable="true" comment="Position in list"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="brand_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="OD_BRANDS_IDENTIFIER">
+            <column name="identifier"/>
+        </constraint>
+        <index referenceId="OD_BRANDS_FEATURED_POSITION" indexType="btree">
+            <column name="is_featured"/>
+            <column name="position"/>
+        </index>
+    </table>
+</schema>

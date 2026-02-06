@@ -1,0 +1,261 @@
+//
+//  Common
+//  _____________________________________________
+& when (@media-common = true) { 
+    .algolia-instant-selector-results {
+        padding-bottom: 44px;
+        #algolia-left-container {
+            display: none;
+        }
+        #algolia-right-container {
+            // .ais-SearchBox {
+            //     margin-bottom: 40px;
+            // }
+            #algolia-sorts {
+                select {
+                    height: auto;
+                }
+            }
+            .algolia-infos {
+                background: transparent;
+                font-size: 1.6rem;
+                color: @color-black;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                .pull-right {
+                    margin-left: auto;
+                    display: inline-flex;
+                    background-color: @color-white;
+                    align-items: center;
+                    border-radius: 15px;
+                    padding: 0 15px;
+                    .box-shadow(0 0px 2px 0 fade(@color-black, 20%));
+                    .sort-by-label {
+                        font-size: 1.6rem;
+                        line-height: 46px;
+                        border-right: 1px solid @border_color2;
+                        padding-right: 15px;
+                    }
+                    select.ais-SortBy-select {
+                        border-width: 0px;
+                        border-radius: 0 0 15px 15px;
+                        margin-left: 0;
+                        height: 50px;
+                        outline: 0;
+                        &:focus {
+                            .box-shadow(none);
+                            outline: 0;
+                        }
+                    }
+                }
+            }
+            .ais-Pagination-list {
+                .ais-Pagination-item {
+                    padding: 0;
+                    .ais-Pagination-link {
+                        min-width: 30px;
+                        height: 30px;
+                        text-align: center;
+                        margin-right: 8px;
+                        border-radius: 7px;
+                        background: #c8c8c8;
+                        .box-shadow(inset 0 2px 2px 0 fade(@color-black, 20%));
+                        font-weight: normal;
+                        font-size: 1.4rem;
+                        line-height: 3.2rem;
+                        letter-spacing: normal;
+                        padding: 0 10px;
+                        display: block;
+                    }                    
+                    &:not(.ais-Pagination-item--disabled) {
+                        display: inline-block;
+                    }
+                }
+                .ais-Pagination-item.ais-Pagination-item--selected {
+                    .ais-Pagination-link {
+                        color: @color-white;
+                        background-color: @second_primary_color;
+                        .box-shadow(none);
+                    }                    
+                }
+                .ais-Pagination-item--nextPage,
+                .ais-Pagination-item--previousPage {
+                    width: auto;
+                    .ais-Pagination-link {
+                        background-color: transparent;
+                        .box-shadow(none);
+                        width: 30px;
+                        text-indent: -9999px;
+                        position: relative;
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            top: 0;
+                            bottom: 0;
+                            right: 0;
+                            color: @color-black;
+                            left: 0;
+                            text-indent: -8px;
+                            font-family: @icon-font;
+                            font-size: 46px;
+
+                        }
+                    }
+                }
+                .ais-Pagination-item--nextPage {
+                    .ais-Pagination-link {
+                        &::before {
+                            content: @icon-next;
+                        }
+                    }
+                }
+                .ais-Pagination-item--previousPage {
+                    .ais-Pagination-link {
+                        &::before {
+                            content: @icon-prev;
+                        }
+                    }
+                }
+            }
+            .result-wrapper {
+                .result-thumbnail {
+                    margin-bottom: 15px;
+                }
+                .result-title {
+                    margin-bottom: 10px;
+                }
+                .price {
+                    color: @color-black;
+                }
+            }
+        }
+        
+    }
+    .ais-SearchBox-form {
+        .ais-SearchBox-input {
+            height: 6rem;
+            box-shadow: none;
+            padding: 0 6.8rem 0 3rem;
+            font-size: 1.4rem;
+            color: @grey_400;
+            .border-radius(@radius:1.2rem);
+            &::placeholder{
+                font-style: italic;
+                font-size: 1.4rem;
+                color: @grey_400;
+            }
+        }
+        .ais-SearchBox-reset {
+            right: 0;
+            top: 0;
+            bottom: 0;
+            height: auto;
+            padding: 1.6rem 2rem;
+            color: #b1b1b1;
+        }
+    }
+    .aa-Form {
+        .aa-LoadingIndicator {
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            bottom: 1px;
+            padding: 2rem 2rem;
+            background: @color-white;
+            .border-radius(1.2rem);
+        }
+    }
+    .aa-Panel {
+        padding-left: 0 !important;
+        &.productColumn1 {
+            .aa-PanelLayout {
+                width: 100%;
+                margin: 0;
+                section{
+                    &:nth-child(1) {
+                        border-left-width: 0 !important;
+                        grid-area: 1;
+                    }
+                    &:nth-child(2),
+                    &:nth-child(3) {
+                        display: none;
+                   }
+                }
+                .footer_algolia {
+                    display: none;
+                }
+            }
+        }
+        .aa-List {
+            .algoliasearch-autocomplete-price {
+                color: @color-black;
+            }
+        }
+    }
+}
+//
+//  Desktop
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .algolia-instant-selector-results {
+        #algolia-right-container {
+            width: 100%;
+        }
+    }
+    .aa-Panel {
+        left: 50% !important;
+        right: initial !important;
+        min-width: initial !important;
+        width: 100% !important;
+        max-width: @layout__max-width - (@layout-indent__width * 2) !important;
+        padding-left: @layout-indent__width !important;
+        padding-right: @layout-indent__width;
+        transform: translateX(-50%);
+        &.productColumn1 {
+            .aa-PanelLayout {
+                section{
+                    &:nth-child(1) {
+                        margin-left: 0 !important;
+                        grid-area: 1;
+                        .aa-List {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                        }
+                        .aa-SourceFooter {
+                            #autocomplete-products-footer {
+                                width: 100% !important;
+                                left: 0 !important;
+                            }
+                        }
+                    }
+                }
+            }
+        } 
+
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .algolia-instant-selector-results {
+        #algolia-right-container {
+            .algolia-infos {
+                .pull-left, .pull-right {
+                    width: 100%;
+                    text-align: center;
+                    .sort-by-label {
+                        width: 140px;
+                    }
+                }
+                #algolia-stats {
+                    order: 2;
+                    margin-top: 1rem;
+                }
+            }
+        }
+    }
+}

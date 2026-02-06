@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Overdose\Brands\Api\BrandsRepositoryInterface" type="Overdose\Brands\Model\BrandsRepository"/>
+    <preference for="Overdose\Brands\Api\Data\BrandsSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="od_brands_brands_listing_data_source" xsi:type="string">Overdose\Brands\Model\ResourceModel\Product\Brands\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Overdose\Brands\Model\ResourceModel\Product\Brands\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">od_brands</argument>
+            <argument name="eventPrefix" xsi:type="string">od_brands_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">block_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Overdose\Brands\Model\ResourceModel\Product\Brands</argument>
+        </arguments>
+    </type>
+    <virtualType name="Overdose\Brands\BrandImageUpload" type="Overdose\Brands\Model\ImageUploader">
+        <arguments>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+            <argument name="allowedMimeTypes" xsi:type="array">
+                <item name="jpg" xsi:type="string">image/jpg</item>
+                <item name="jpeg" xsi:type="string">image/jpeg</item>
+                <item name="gif" xsi:type="string">image/gif</item>
+                <item name="png" xsi:type="string">image/png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Overdose\Brands\Controller\Adminhtml\Brands\Logo\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Overdose\Brands\BrandImageUpload</argument>
+        </arguments>
+    </type>
+    <type name="Overdose\Brands\Controller\Adminhtml\Brands\Save">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Overdose\Brands\BrandImageUpload</argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="cms-full-width" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+   <referenceContainer name="content">
+      <block class="Cfs\InvalidAccess\Block\Index" name="invalid_access_menu" template="Cfs_InvalidAccess::invalidaccess.phtml" />
+   </referenceContainer>
+   <referenceBlock name="page.top" remove="true"/>
+   <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+   <referenceBlock name="header.container" remove="true"/>
+   <referenceBlock name="footer-container" remove="true"/>
+   <referenceContainer name="wishlist_sidebar" remove="true" />
+   <referenceBlock name="copyright" remove="true"/>
+
+</layout>

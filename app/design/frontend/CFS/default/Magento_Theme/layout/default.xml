@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+		<!--Header -->
+		<referenceContainer name="header.panel">
+			<block class="Magento\Cms\Block\Block" name="top_head_links"> 
+				<arguments> 
+					<argument name="block_id" xsi:type="string">top_head_links</argument> 
+				</arguments> 
+			</block>
+		</referenceContainer>
+        <referenceContainer name="header.panel">
+            <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">header links</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+		<referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_file" xsi:type="string">images/logo.svg</argument>
+                <argument name="logo_width" xsi:type="number">280</argument>
+                <argument name="logo_height" xsi:type="number">55</argument>
+                <argument name="logo_alt" xsi:type="string">Cooper Fluid Systems</argument>
+            </arguments>
+        </referenceBlock>
+		<!--Footer -->
+		<referenceContainer name="footer">			
+			<block class="Magento\Cms\Block\Block" name="footer_company" before="-"> 
+				<arguments> 
+					<argument name="block_id" xsi:type="string">footer_company</argument> 
+				</arguments> 
+			</block>
+			<block class="Magento\Cms\Block\Block" name="footer_links-block" after="-"> 
+				<arguments> 
+					<argument name="block_id" xsi:type="string">footer_links</argument> 
+				</arguments> 
+			</block>			
+		</referenceContainer>
+		<referenceContainer name="footer-container">
+			<container name="footer_copy_bottom" label="footer-copy-bottom" htmlTag="div" htmlClass="footer-copy-bottom" after="-">	
+				<container name="footer_container_bottom" label="footer-container-bootom" htmlTag="div" htmlClass="footer-container-bottom">
+					<block class="Magento\Cms\Block\Block" name="footer_left_card" before="-"> 
+						<arguments> 
+							<argument name="block_id" xsi:type="string">footer_left_card</argument> 
+						</arguments> 
+					</block>
+					<block class="Magento\Cms\Block\Block" name="footer_right_card" after="-"> 
+						<arguments> 
+							<argument name="block_id" xsi:type="string">footer_right_card</argument> 
+						</arguments> 
+					</block>				
+				</container>
+			 </container>
+		</referenceContainer>
+        <!--Move Block-->
+		<move element="top.search" destination="header-wrapper" after="logo" />
+		<move element="copyright" destination="footer_container_bottom" after="footer_left_card" />
+		<!--Remove Block-->
+		<referenceBlock name="advanced-search-link" remove="true"/>
+		<referenceBlock name="catalog.compare.link" remove="true"/>
+		<referenceBlock name="report.bugs" remove="true"/>
+		<referenceBlock name="footer_links" remove="true"/>
+		<referenceBlock name="form.subscribe" remove="true"/>
+    </body>
+</page>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" fill="#002856" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        isolation: isolate;
+      }
+
+      .cls-2 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-3 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-4 {
+        fill: none;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-4" width="24" height="24"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-4" width="24" height="24"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g class="cls-3">
+      <g class="cls-1">
+        <g class="cls-2">
+          <path d="m18.37,15.6h-7.97l-3-7.2h13.67l-2.7,7.2Zm5.42-9.08c-.22-.32-.59-.52-.99-.52H6.4l-1.39-3.32c-.37-.9-1.25-1.48-2.21-1.48H0v2.4h2.8l5.69,13.66c.19.45.62.74,1.11.74h9.6c.5,0,.95-.31,1.12-.78l3.6-9.6c.14-.37.09-.78-.14-1.1h0Z"/>
+          <path d="m12,21c0,.99-.81,1.8-1.8,1.8s-1.8-.81-1.8-1.8.81-1.8,1.8-1.8,1.8.81,1.8,1.8Z"/>
+          <circle cx="18.6" cy="21" r="1.8"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

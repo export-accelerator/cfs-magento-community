@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Overdose_Brands::od_brands" title="Brands" translate="title" module="Overdose_Brands" sortOrder="36" parent="Magento_Backend::stores_attributes" action="od_brands/brands/index" resource="Overdose_Brands::od_brands"/>
+    </menu>
+</config>

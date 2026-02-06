@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ /**
+  * Copyright © Magento, Inc. All rights reserved.
+  * See COPYING.txt for license details.
+  */
+-->
+
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+    <actionGroup name="AdminChangeCompanyStatusToRejectedActionGroup" extends="AdminChangeCompanyStatusActionGroup">
+        <annotations>
+            <description>Sets the status of a company on the Create or Edit Company Page to 'Rejected' status. Use AdminChangeCompanyStatusActionGroup for other statuses</description>
+        </annotations>
+        <arguments>
+            <argument name="reasonForRejection" defaultValue="Rejected test reason" type="string"/>
+        </arguments>
+        <waitForElementVisible selector="{{AdminNewCompanySection.reasonForRejectionInput}}" stepKey="waitForChangeStatusConfirmationModal"/>
+        <fillField userInput="{{reasonForRejection}}" selector="{{AdminNewCompanySection.reasonForRejectionInput}}" stepKey="enterReasonForRejection" before="clickChangeStatus"/>
+    </actionGroup>
+</actionGroups>
