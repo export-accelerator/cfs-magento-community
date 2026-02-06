@@ -15,18 +15,23 @@ class Cart {
     }
     public function afterGetSectionData($subject, $result)
     {
-        $totals = $this->checkoutSession->getQuote()->getTotals();
-        $grandTotal = $totals['grand_total']->getValue();
-        $tax = $totals['tax']->getValue();
+        try {
+            $totals = $this->checkoutSession->getQuote()->getTotals();
+            $grandTotal = isset($totals['grand_total']) ? $totals['grand_total']->getValue() : 0;
+            $tax = isset($totals['tax']) ? $totals['tax']->getValue() : 0;
 
-        $extraInfo = [ 
-            'grand_total' => isset($totals['grand_total'])
-            ? $this->checkoutHelper->formatPrice($grandTotal)
-            : 0,
-            'tax' => isset($totals['tax'])
-            ? $this->checkoutHelper->formatPrice($tax)
-            : 0,
-        ];
-        return array_merge($result, $extraInfo);
+            $extraInfo = [ 
+                'grand_total' => isset($totals['grand_total'])
+                    ? $this->checkoutHelper->formatPrice($grandTotal)
+                    : 0,
+                'tax' => isset($totals['tax'])
+                    ? $this->checkoutHelper->formatPrice($tax)
+                    : 0,
+            ];
+            return array_merge($result, $extraInfo);
+        } catch (\Exception $e) {
+            // Return original result if there's an error processing totals
+            return $result;
+        }
     }
 }

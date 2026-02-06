@@ -57,6 +57,7 @@ class DefaultItem extends \Magento\Checkout\CustomerData\DefaultItem
      * @param \Magento\Framework\UrlInterface $urlBuilder
      * @param \Magento\Catalog\Helper\Product\ConfigurationPool $configurationPool
      * @param \Magento\Checkout\Helper\Data $checkoutHelper
+     * @param \Magento\Catalog\Model\ProductRepository|null $_productRepository
      * @param \Magento\Framework\Escaper|null $escaper
      * @param ItemResolverInterface|null $itemResolver
      * @codeCoverageIgnore
@@ -67,7 +68,7 @@ class DefaultItem extends \Magento\Checkout\CustomerData\DefaultItem
         \Magento\Framework\UrlInterface $urlBuilder,
         \Magento\Catalog\Helper\Product\ConfigurationPool $configurationPool,
         \Magento\Checkout\Helper\Data $checkoutHelper,
-        \Magento\Catalog\Model\ProductRepository $_productRepository,
+        \Magento\Catalog\Model\ProductRepository $_productRepository = null,
         \Magento\Framework\Escaper $escaper = null,
         ItemResolverInterface $itemResolver = null
     ) {
@@ -76,7 +77,7 @@ class DefaultItem extends \Magento\Checkout\CustomerData\DefaultItem
         $this->msrpHelper = $msrpHelper;
         $this->urlBuilder = $urlBuilder;
         $this->checkoutHelper = $checkoutHelper;
-        $this->_productRepository  = $_productRepository;
+        $this->_productRepository = $_productRepository ?: ObjectManager::getInstance()->get(\Magento\Catalog\Model\ProductRepository::class);
         $this->escaper = $escaper ?: ObjectManager::getInstance()->get(\Magento\Framework\Escaper::class);
         $this->itemResolver = $itemResolver ?: ObjectManager::getInstance()->get(ItemResolverInterface::class);
     }
